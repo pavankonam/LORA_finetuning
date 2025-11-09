@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Accidental files
+=0.26.0
+
+# Model checkpoints (optional - uncomment if you don't want to upload large model files)
+# fine_tuned_model/
+# finetune_100_model/
+
+# Evaluation results (optional)
+# evaluation_results.json
+
