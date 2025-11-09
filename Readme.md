@@ -519,7 +519,6 @@ docker run --gpus all --rm \
 - NVIDIA drivers installed on host
 - CUDA-compatible GPU
 
-**Remove Container**: The `--rm` flag automatically removes the container after execution.
 
 ---
 
@@ -531,8 +530,6 @@ docker --version
 
 # Check NVIDIA Docker runtime
 docker run --rm --gpus all nvidia/cuda:12.1.1-base-ubuntu22.04 nvidia-smi
-
-# If successful, you should see GPU information
 ```
 
 ---
@@ -682,113 +679,6 @@ tokenizers>=0.15.0           # Fast tokenization
 
 See `requirements.txt` for complete dependency list with version constraints.
 
----
-
-## Troubleshooting
-
-### Common Issues and Solutions
-
-**Issue**: CUDA Out of Memory during training
-```bash
-# Solution: Reduce batch size in train.py
-batch_size = 1
-gradient_accumulation_steps = 8
-```
-
-**Issue**: Model files not found
-```bash
-# Solution: Re-run data preparation
-python data_preparation.py
-```
-
-**Issue**: Slow training performance
-```bash
-# Solution: Verify GPU is being used
-python -c "import torch; print(torch.cuda.is_available())"
-python -c "import torch; print(torch.cuda.get_device_name(0))"
-```
-
-**Issue**: Import errors or version conflicts
-```bash
-# Solution: Reinstall dependencies
-pip install --force-reinstall -r requirements.txt
-```
-
-**Issue**: NaN loss during training
-```bash
-# Solution: Already handled with float32 precision
-# If occurs, reduce learning rate to 1e-5
-```
-
----
-
-## Assignment Compliance
-
-### Requirements Checklist
-
-- [x] **Unit Test Implementation (40 points)**
-  - Completes in <10 minutes
-  - Demonstrates learning capability
-  - Validates complete pipeline
-  - No errors during execution
-
-- [x] **Data Preparation**
-  - SAMSum dataset properly loaded
-  - Train/test split implemented
-  - JSON format with proper encoding
-  - Reproducible data processing
-
-- [x] **Fine-Tuning Implementation**
-  - LoRA correctly applied to Qwen model
-  - Training completes successfully
-  - Model saves properly with adapters
-  - Hyperparameters documented
-
-- [x] **Evaluation Component**
-  - Base model comparison implemented
-  - Quantitative metrics computed
-  - Shows clear improvement (7.4%)
-  - Results saved to JSON
-
-- [x] **Documentation**
-  - Comprehensive README
-  - Code comments throughout
-  - Requirements file provided
-  - Execution instructions clear
-
-- [x] **Reproducibility**
-  - Dockerfile provided
-  - Dependencies pinned
-  - Random seeds set
-  - Environment documented
-
-### Academic Integrity Statement
-
-This implementation uses only pip-installable libraries from public repositories. All code is original work developed for this assignment. The SAMSum dataset is properly cited and used in accordance with its license.
-
-**Dataset Citation**:
-```
-Gliwa, B., Mochol, I., Biesek, M., & Wawer, A. (2019).
-SAMSum Corpus: A Human-annotated Dialogue Dataset for Abstractive Summarization.
-arXiv preprint arXiv:1911.12237.
-```
-
----
-
-## Future Work
-
-### Potential Improvements
-
-1. **Higher LoRA Rank**: Experiment with r=16 or r=32 for potentially better performance
-2. **Extended Training**: Increase to 5-10 epochs for further refinement
-3. **Larger Batch Size**: Leverage more GPU memory if available
-4. **Mixed Precision**: Implement FP16 training with proper gradient scaling
-5. **Multi-Dataset Training**: Combine SAMSum with DialogSum for robustness
-6. **Hyperparameter Optimization**: Grid search for optimal learning rate and rank
-7. **Evaluation Metrics**: Add ROUGE, BLEU, or BERTScore for generation quality
-8. **Model Ensemble**: Combine multiple LoRA adapters for improved performance
-
----
 
 ## Conclusion
 
@@ -800,10 +690,3 @@ This project successfully demonstrates parameter-efficient fine-tuning of a 1.5B
 - ✅ Demonstrated measurable improvement on unseen data
 - ✅ Implemented with memory-efficient LoRA adapters
 - ✅ Provided complete documentation and reproducibility
-
----
-
-**Last Updated**: November 2025  
-**Course**: Large Language Model Fine-Tuning  
-**Method**: LoRA (Low-Rank Adaptation)  
-**Platform**: DeepDish GPU Cluster
