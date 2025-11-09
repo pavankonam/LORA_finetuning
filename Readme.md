@@ -351,3 +351,4 @@ tokenizers>=0.15.0
 
 **Platform**: DeepDish GPU Cluster  
 **GPU**: NVIDIA RTX A6000
+**DeepDish Link** https://mlds-deepdish4.ads.northwestern.edu/hub/user-redirect/lab/tree/LORA_Finetuning
