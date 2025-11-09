@@ -129,6 +129,7 @@ Gradient Norms:          0.6-1.0 (stable)
 
 ![Evaluation Output](evaluate_output.png)
 
+“Held-out examples are strictly disjoint from training/validation; runtime assertions prevent overlap.”
 ```
 Base Model Loss:        8.3056
 Fine-Tuned Model Loss:  7.6915
